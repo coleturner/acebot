@@ -121,6 +121,9 @@ async def sync_with_repo(repo):
     repoName = parse_result.path.strip("/")
     url = f"https://api.github.com/repos/{repoName}/git/trees/master?recursive=1&access_token={access_token}"
     data = get_json_from_url(url)
+
+    # reset the dictionary and populate
+    dictionary = {}
     for branch in data['tree']:
         pathname = branch['path'].lower()
         if pathname.endswith('.md') and not pathname.startswith('.'):

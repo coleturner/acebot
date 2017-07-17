@@ -9,7 +9,7 @@ To run the bot first create a Discord Bot User and get your token. You will also
 ACEBOT_API_KEY=<your bot token> GITHUB_ACCESS_TOKEN=<your github token> python3 bot.py
 ```
 
-To populate the dictionary:
+To populate the dictionary (requires administrator privileges on server):
 
 ```
 $repo https://github.com/markerikson/react-redux-links
