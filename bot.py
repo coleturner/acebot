@@ -66,7 +66,7 @@ def import_blob(repo, path, markdown, parent):
     if parent.startswith('./'):
         parent = parent.strip('./')
 
-    parent = f"{repo}/{parent}"
+    parent = f"{repo}/blob/master/{parent}"
     # First we parse for links as text
     markdown_by_line = markdown.split("\n")
     for index, line in enumerate(markdown_by_line):
@@ -74,7 +74,7 @@ def import_blob(repo, path, markdown, parent):
             (whole_match, text, url) = links_with_titles
             #print(f"Imported {text} to {url}")
             if url.startswith('./'):
-                url = f"https://github.com/{repo}/blob/master/{url.strip('./')}"
+                url = f"{repo}/blob/master/{url.strip('./')}"
             
             description = ""
             if len(markdown_by_line) > index + 1:
@@ -101,7 +101,7 @@ def import_blob(repo, path, markdown, parent):
     for (link_list) in regex.findall(LINK_LIST_REGEX, markdown):
         (text, url, description) = link_list
         if url.startswith('./'):
-                url = f"https://github.com/{repo}/blob/master/{url.strip('./')}"
+            url = f"{repo}/blob/master/{url.strip('./')}"
         link = {
             'title': text,
             'titleLower': text.lower(),
